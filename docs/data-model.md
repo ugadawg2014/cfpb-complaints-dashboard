@@ -30,3 +30,20 @@
 | zip_code | text | Often masked to 3 digits in CFPB output |
 | timely | logical | Did the company respond within CFPB's SLA |
 | consumer_disputed | text | Legacy field; CFPB stopped collecting in 2017 |
+
+## Why we slice the data
+
+CFPB's bulk CSV is the full historical complaint database since 2011 — ~5M+
+rows, 8.4 GB unzipped at the time of writing. The CFPB Search API caps
+pagination at the first 10,000 results, so it cannot serve as a bulk-export
+endpoint either.
+
+The pragmatic solution: download the bulk file once, slice it to a recent
+window with the helper script in `scripts/slice_complaints.py`, and point
+Power BI at the smaller file. The window is configurable; v1 uses the most
+recent 24 months.
+
+For a future v2, the slicing step could be replaced by Power BI's
+Incremental Refresh feature (Pro license required), which would maintain
+historical partitions automatically while only refreshing the most recent
+slice from the bulk file.
