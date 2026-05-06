@@ -30,7 +30,6 @@ let
         "submitted_via",
         "tags",
         "timely",
-        "consumer_disputed",
         "consumer_consent_provided"
     },
 
@@ -97,7 +96,6 @@ let
         {"submitted_via",              type text},
         {"tags",                       type text},
         {"timely",                     type logical},
-        {"consumer_disputed",          type text},
         {"consumer_consent_provided",  type text}
     })
 in
