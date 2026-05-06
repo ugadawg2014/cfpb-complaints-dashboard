@@ -3,51 +3,40 @@
 ## Prerequisites
 
 - **Power BI Desktop** (free) — <https://powerbi.microsoft.com/desktop/>
-- An internet connection (the report pulls live from CFPB)
+- **Python 3.10+** for the slicing helper
+- ~15 GB free disk for the source + sliced CSVs
 
-## Steps
+## One-time data prep
 
-1. Clone or download this repository.
-2. Open `pbix/cfpb-complaints.pbix` in Power BI Desktop.
-3. When prompted for credentials on the CFPB endpoint, choose:
-   - **Anonymous** authentication
-   - **Public** privacy level
-   - Scope to `https://www.consumerfinance.gov/data-research/consumer-complaints/search/api/v1/`
-4. Click **Refresh**. First refresh takes 5–15 minutes (the API is
-   uncompressed and paginates 1000 rows per request).
-5. After refresh completes, all visuals populate automatically.
+1. Download the bulk CFPB Consumer Complaint database:
+   - <https://files.consumerfinance.gov/ccdb/complaints.csv.zip> (~1.7 GB)
+2. Unzip into a working directory (this project assumes `D:\CFPB_complaints\`):
+   - `complaints.csv` (~8.4 GB unzipped)
+3. Slice to a 5-year window so Power BI can refresh comfortably:
+python scripts/slice_complaints.py --cutoff 2021-05-01
 
-## Adjusting the data window
+Output: `D:\CFPB_complaints\complaints_recent.csv` (~6.5 GB, ~12.8M rows).
+Run takes 5–10 minutes.
 
-The `DaysBack` parameter at the top of the `Complaints` query controls how
-much history is pulled. Defaults to 90 days. Raise it to 365 for a full year
-or drop it to 30 for fast iteration.
+## Open the report
+
+1. Open `pbix/cfpb-complaints.pbix` in Power BI Desktop.
+2. The `Complaints` query reads `D:\CFPB_complaints\complaints_recent.csv`.
+If you saved your sliced CSV elsewhere, open Power Query Editor → Complaints
+query → first step → update `SourcePath` to your file.
+3. **Home → Refresh.** First refresh takes 3–5 minutes for ~12.8M rows.
 
 ## Refresh strategy
 
-- During development: keep `DaysBack` low (30) for fast iteration.
-- Before publishing screenshots: bump to the desired window and refresh once.
-- For a production-style live refresh, this report is compatible with Power BI
-  Service scheduled refresh (requires a Pro license).
+- **During development:** drop the `--cutoff` to a more recent date (e.g.
+`2024-01-01`) for faster iteration, then bump it back before publishing
+screenshots.
+- **For fresher data:** re-download the bulk ZIP from CFPB, re-run the slicer,
+refresh Power BI. CFPB updates daily but a 2–4 week cadence is fine for
+most analytical questions.
 
-## Data file location
-For the initial setup, unfortunately the zipped csv file is too large.
-The Power BI report reads `D:\CFPB_complaints\complaints_recent.csv`. If you
-clone this repo and want to refresh, either:
+## Working directory vs repo
 
-1. Place your sliced CSV at exactly that path, or
-2. Open the `Complaints` query in Power BI Desktop's Power Query Editor and
-   update the `SourcePath` value at the top to wherever you saved your file.
-
-## Slicing the bulk download
-
-The bulk CSV is too large for typical Power BI Desktop refresh. Slice it
-down once with the helper script in `scripts/`:
-
-    python scripts/slice_complaints.py --cutoff 2024-05-01
-
-That writes `D:\CFPB_complaints\complaints_recent.csv` (default path —
-override with `--dst`). The Power BI report reads that path.
-
-Re-run the script (or pass a different `--cutoff`) any time you want a
-different window. Re-running takes ~5–10 minutes.
+Large data files (`complaints.csv`, `complaints_recent.csv`) live outside the
+repo at `D:\CFPB_complaints\` and are gitignored. The repo contains code,
+documentation, and (optionally) the .pbix.
