@@ -31,13 +31,14 @@ public complaint database. Refreshes live from the CFPB Search API.
 - **DAX** (measures for ratios, time-intelligence comparisons, rankings)
 
 ## Project structure
-├── pbix/ Power BI report (.pbix)
-├── m-code/ Power Query M scripts (one per query)
-├── dax/ DAX measures, exported one per line
-├── data/ Local working data (gitignored; live-loaded from API)
-├── docs/ Data model, findings, setup notes
-├── screenshots/ Dashboard screenshots
-├── LICENSE Creative Commons
+├── pbix/                  Power BI report (.pbix)
+├── m-code/                Power Query M scripts (one per query)
+├── dax/                   DAX measures, exported one per line
+├── scripts/               Helper Python scripts (CSV slicing, etc.)
+├── data/                  Local working data (gitignored; see data/README.md)
+├── docs/                  Data model, findings, setup notes
+├── screenshots/           Dashboard screenshots
+├── LICENSE                CC0 1.0 Universal
 └── README.md
 
 
