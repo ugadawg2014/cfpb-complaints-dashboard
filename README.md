@@ -48,7 +48,11 @@ See [docs/setup.md](docs/setup.md).
 See [docs/findings.md](docs/findings.md).
 
 ## License
-CC 1.0 Universal — code and configuration. CFPB complaint data is public domain.
+
+This project is dedicated to the public domain under
+[Creative Commons CC0 1.0 Universal](LICENSE). You may copy, modify,
+distribute, and use the code freely — no attribution required. CFPB complaint
+data is also in the public domain (U.S. government work).
 
 ## About
 Portfolio project by Joshua Uhlman ([github.com/ugadawg2014](https://github.com/ugadawg2014)).
