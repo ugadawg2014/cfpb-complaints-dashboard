@@ -1,2 +1,56 @@
-# cfpb-complaints-dashboard
-Power BI dashboard analyzing CFPB consumer complaint data, refreshed live from the CFPB Search API
+# CFPB Consumer Complaint Dashboard
+
+A Power BI dashboard built on the U.S. Consumer Financial Protection Bureau's
+public complaint database. Refreshes live from the CFPB Search API.
+
+## What it does
+
+- Tracks complaint volume, timeliness of company responses, and dispute rates
+  across products, issues, companies, and states.
+- Surfaces complaint patterns useful for consumer-protection compliance,
+  fair-lending review, and competitive benchmarking.
+
+## Live dashboard
+
+> _Coming soon — embedded Power BI report or screenshot gallery._
+
+## About the data
+
+| | |
+|---|---|
+| **Source** | [CFPB Consumer Complaint Database](https://www.consumerfinance.gov/data-research/consumer-complaints/) |
+| **Endpoint** | `https://www.consumerfinance.gov/data-research/consumer-complaints/search/api/v1/` |
+| **Update cadence** | CFPB updates daily |
+| **Window pulled** | Most recent 90 days (configurable via `DaysBack` parameter) |
+| **License** | Public domain (U.S. government work) |
+
+## Tech stack
+
+- **Power BI Desktop** (model + visuals)
+- **Power Query / M** (live API ingestion, pagination, type coercion)
+- **DAX** (measures for ratios, time-intelligence comparisons, rankings)
+
+## Project structure
+├── pbix/ Power BI report (.pbix)
+├── m-code/ Power Query M scripts (one per query)
+├── dax/ DAX measures, exported one per line
+├── data/ Local working data (gitignored; live-loaded from API)
+├── docs/ Data model, findings, setup notes
+├── screenshots/ Dashboard screenshots
+├── LICENSE MIT
+└── README.md
+
+
+## How to run it
+See [docs/setup.md](docs/setup.md).
+
+## Findings
+See [docs/findings.md](docs/findings.md).
+
+## License
+[MIT](LICENSE) — code and configuration. CFPB complaint data is public domain.
+
+## About
+Portfolio project by Joshua Uhlman ([github.com/ugadawg2014](https://github.com/ugadawg2014)).
+Built to demonstrate Power Query, DAX, and dashboard design skills relevant to
+risk, compliance, and regulatory-reporting work in financial services.
