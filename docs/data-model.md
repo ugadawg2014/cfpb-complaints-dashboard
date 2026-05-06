@@ -11,7 +11,7 @@
 
 I evaluated three ingestion strategies before settling on a manual bulk-CSV
 slice as the v1 ingestion layer. Documenting the trade-offs here because
-"why we chose this" is more important than "what we did."
+"why I chose this" is more important than "what I did."
 
 ### Option 1: CFPB Search API (`/search/api/v1/`)
 **Rejected.** The API caps pagination at `from + size ≤ 10,000`. Faceting the
