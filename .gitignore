@@ -1,0 +1,32 @@
+# Power BI
+*.pbix.bak
+.pbi-cache/
+*.pbiviz
+*.tmp
+
+# Data files (we pull live from CFPB API; don't commit raw data)
+data/*.csv
+data/*.zip
+data/*.parquet
+data/*.json
+!data/README.md
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Office temp lockfiles
+~$*
+
+# Optional: Python (if you ever add data-prep scripts)
+__pycache__/
+*.pyc
+.venv/
+venv/
