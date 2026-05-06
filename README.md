@@ -37,7 +37,7 @@ public complaint database. Refreshes live from the CFPB Search API.
 ├── data/ Local working data (gitignored; live-loaded from API)
 ├── docs/ Data model, findings, setup notes
 ├── screenshots/ Dashboard screenshots
-├── LICENSE MIT
+├── LICENSE Creative Commons
 └── README.md
 
 
@@ -48,7 +48,7 @@ See [docs/setup.md](docs/setup.md).
 See [docs/findings.md](docs/findings.md).
 
 ## License
-[MIT](LICENSE) — code and configuration. CFPB complaint data is public domain.
+CC 1.0 Universal — code and configuration. CFPB complaint data is public domain.
 
 ## About
 Portfolio project by Joshua Uhlman ([github.com/ugadawg2014](https://github.com/ugadawg2014)).
