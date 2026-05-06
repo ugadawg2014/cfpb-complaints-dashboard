@@ -1,0 +1,27 @@
+// Measure: Total Complaints
+Total Complaints = COUNTROWS('Complaints')
+
+// Measure: Timely Response Rate
+Timely Response Rate =
+DIVIDE(
+    CALCULATE([Total Complaints], 'Complaints'[timely] = TRUE()),
+    [Total Complaints]
+)
+
+// Measure: Complaints YoY %
+Complaints YoY % =
+VAR CurrentYear = [Total Complaints]
+VAR PriorYear =
+    CALCULATE([Total Complaints], DATEADD('Date'[Date], -1, YEAR))
+RETURN
+    DIVIDE(CurrentYear - PriorYear, PriorYear)
+
+// Measure: Avg Days to Send to Company
+Avg Days to Send to Company =
+AVERAGEX(
+    'Complaints',
+    DATEDIFF('Complaints'[date_received], 'Complaints'[date_sent_to_company], DAY)
+)
+
+// Measure: Distinct Companies
+Distinct Companies = DISTINCTCOUNT('Complaints'[company])
