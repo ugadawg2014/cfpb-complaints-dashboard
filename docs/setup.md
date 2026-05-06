@@ -38,3 +38,16 @@ clone this repo and want to refresh, either:
 1. Place your sliced CSV at exactly that path, or
 2. Open the `Complaints` query in Power BI Desktop's Power Query Editor and
    update the `SourcePath` value at the top to wherever you saved your file.
+
+## Slicing the bulk download
+
+The bulk CSV is too large for typical Power BI Desktop refresh. Slice it
+down once with the helper script in `scripts/`:
+
+    python scripts/slice_complaints.py --cutoff 2024-05-01
+
+That writes `D:\CFPB_complaints\complaints_recent.csv` (default path —
+override with `--dst`). The Power BI report reads that path.
+
+Re-run the script (or pass a different `--cutoff`) any time you want a
+different window. Re-running takes ~5–10 minutes.
