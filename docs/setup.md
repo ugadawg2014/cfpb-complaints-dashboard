@@ -29,3 +29,12 @@ or drop it to 30 for fast iteration.
 - Before publishing screenshots: bump to the desired window and refresh once.
 - For a production-style live refresh, this report is compatible with Power BI
   Service scheduled refresh (requires a Pro license).
+
+## Data file location
+For the initial setup, unfortunately the zipped csv file is too large.
+The Power BI report reads `D:\CFPB_complaints\complaints_recent.csv`. If you
+clone this repo and want to refresh, either:
+
+1. Place your sliced CSV at exactly that path, or
+2. Open the `Complaints` query in Power BI Desktop's Power Query Editor and
+   update the `SourcePath` value at the top to wherever you saved your file.
