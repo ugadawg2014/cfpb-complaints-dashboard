@@ -7,9 +7,7 @@ path to a complete dataset. This script slices that CSV down to a recent
 window so Power BI can refresh comfortably.
 
 Usage:
-    python slice_complaints.py --src "D:\\CFPB_complaints\\complaints.csv" \\
-                               --dst "D:\\CFPB_complaints\\complaints_recent.csv" \\
-                               --cutoff 2024-05-01
+    python slice_complaints.py --cutoff 2021-05-01
 
 Defaults assume the layout used in this project's README. Run
 `python slice_complaints.py --help` for the full list of options.
@@ -42,7 +40,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument(
         "--cutoff",
         type=date.fromisoformat,
-        default=date(2024, 5, 1),
+        default=date(2021, 5, 1),
         help="Keep rows where Date received >= this YYYY-MM-DD (default: %(default)s)",
     )
     p.add_argument(
@@ -54,11 +52,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def slice_csv(src: Path, dst: Path, cutoff: date, date_column: str) -> tuple[int, int]:
-    """Stream-filter `src` into `dst`, keeping rows on/after `cutoff`.
-
-    Returns (rows_scanned, rows_kept).
-    """
-    # The narrative column can exceed the default csv field-size limit.
+    """Stream-filter `src` into `dst`, keeping rows on/after `cutoff`."""
     csv.field_size_limit(min(sys.maxsize, 2**31 - 1))
 
     with src.open("r", encoding="utf-8", newline="") as fin, \
