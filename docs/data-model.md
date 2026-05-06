@@ -7,6 +7,31 @@
 | `Complaints` | CFPB API | One row per complaint | Pulled live, last 90 days |
 | `Date` | Generated in M | One row per day | Built with `List.Dates`; needed for time-intelligence DAX |
 
+## Ingestion strategy: why local-baseline, not live-refresh
+
+I evaluated three ingestion strategies before settling on a manual bulk-CSV
+slice as the v1 ingestion layer. Documenting the trade-offs here because
+"why we chose this" is more important than "what we did."
+
+### Option 1: CFPB Search API (`/search/api/v1/`)
+**Rejected.** The API caps pagination at `from + size ≤ 10,000`. Faceting the
+request by state to keep each chunk under the cap surfaced inconsistent
+behavior — Alabama queries paginated past 10k on dates that should return
+~100 rows. Aggressive call patterns also surface 429 rate limits. The API is
+designed for narrow ad-hoc queries, not bulk ingestion.
+
+### Option 2: Bulk CSV ZIP via Power Query (`Web.Contents` + custom unzip)
+**Deferred to v2.** The bulk CSV is ~1.7 GB compressed, ~8.4 GB uncompressed.
+End-to-end refresh would be 10–20 minutes per refresh. Acceptable for a
+published live report; punishing during dashboard iteration. Also requires
+a custom `UnzipContents` M function (~80 LOC).
+
+### Option 3: Local CSV slice (selected for v1)
+**Selected.** Manual download of the bulk ZIP, slice to a 5-year window with
+`scripts/slice_complaints.py`, point Power BI at the local file. Refresh in
+Power BI takes 3–5 minutes. Trade-off: data freshness depends on manual
+re-cut cadence (target: every 2–4 weeks).
+
 ## Relationships
 
 - `Complaints[date_received]` → `Date[Date]` (many-to-one, single direction)
