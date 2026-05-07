@@ -10,9 +10,12 @@ public complaint database. Refreshes live from the CFPB Search API.
 - Surfaces complaint patterns useful for consumer-protection compliance,
   fair-lending review, and competitive benchmarking.
 
-## Live dashboard
+## Dashboard preview
 
-> _Coming soon — embedded Power BI report or screenshot gallery._
+### Overview
+![Overview page](screenshots/CFPR CCD Overview.png)
+![Geographic page](screenshots/CFPR Geographics.png)
+![Data Model](screenshots/CFPR Data Model.png)
 
 ## About the data
 
