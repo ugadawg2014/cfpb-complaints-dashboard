@@ -13,9 +13,11 @@ public complaint database. Refreshes live from the CFPB Search API.
 ## Dashboard preview
 
 ### Overview
-![Overview page](screenshots/CFPR CCD Overview.png)
-![Geographic page](screenshots/CFPR Geographics.png)
-![Data Model](screenshots/CFPR Data Model.png)
+![Overview page](screenshots/01-overview.png)
+### Geographic
+![Geographic page](screenshots/02-geographic.png)
+### Data Model
+![Data Model](screenshots/03-data-model.png)
 
 ## About the data
 
