@@ -30,6 +30,8 @@ public complaint database. Refreshes live from the CFPB Search API.
 - **DAX** (measures for ratios, time-intelligence comparisons, rankings)
 
 ## Project structure
+```
+.
 ├── pbix/                  Power BI report (.pbix)
 ├── m-code/                Power Query M scripts (one per query)
 ├── dax/                   DAX measures, exported one per line
@@ -39,6 +41,7 @@ public complaint database. Refreshes live from the CFPB Search API.
 ├── screenshots/           Dashboard screenshots
 ├── LICENSE                CC0 1.0 Universal
 └── README.md
+```
 
 ## How to run it
 See [docs/setup.md](docs/setup.md).
