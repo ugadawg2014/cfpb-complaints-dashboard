@@ -10,9 +10,16 @@ public complaint database. Refreshes live from the CFPB Search API.
 - Surfaces complaint patterns useful for consumer-protection compliance,
   fair-lending review, and competitive benchmarking.
 
-## Live dashboard
+## Dashboard preview
+### Overview
+![Overview page](screenshots/01-overview.png)
+### Geographic
+![Geographic page](screenshots/02-geographic.png)
+### Data Model
+![Data Model](screenshots/03-data-model.png)
+### Issues
+![Issues Page](screenshots/04-issues.png)
 
-> _Coming soon — embedded Power BI report or screenshot gallery._
 
 ## About the data
 
@@ -31,6 +38,8 @@ public complaint database. Refreshes live from the CFPB Search API.
 - **DAX** (measures for ratios, time-intelligence comparisons, rankings)
 
 ## Project structure
+.
+```
 ├── pbix/                  Power BI report (.pbix)
 ├── m-code/                Power Query M scripts (one per query)
 ├── dax/                   DAX measures, exported one per line
@@ -40,7 +49,7 @@ public complaint database. Refreshes live from the CFPB Search API.
 ├── screenshots/           Dashboard screenshots
 ├── LICENSE                CC0 1.0 Universal
 └── README.md
-
+```
 
 ## How to run it
 See [docs/setup.md](docs/setup.md).
