@@ -15,12 +15,11 @@ public complaint database. Refreshes live from the CFPB Search API.
 ![Geographic page](screenshots/02-geographic.png)
 ### Data Model
 ![Data Model](screenshots/03-data-model.png)
-<<<<<<< HEAD
 ### Issues
 ![Issues Page](screenshots/04-issues.png)
 
 =======
->>>>>>> 29185a77cf3ec11c66c374a062289b4e76d74ae1
+
 
 ## About the data
 **Source** | [CFPB Consumer Complaint Database](https://www.consumerfinance.gov/data-research/consumer-complaints/) 
