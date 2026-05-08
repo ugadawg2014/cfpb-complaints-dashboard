@@ -1,10 +1,8 @@
 # CFPB Consumer Complaint Dashboard
-
 A Power BI dashboard built on the U.S. Consumer Financial Protection Bureau's
 public complaint database. Refreshes live from the CFPB Search API.
 
 ## What it does
-
 - Tracks complaint volume, timeliness of company responses, and dispute rates
   across products, issues, companies, and states.
 - Surfaces complaint patterns useful for consumer-protection compliance,
@@ -17,22 +15,22 @@ public complaint database. Refreshes live from the CFPB Search API.
 ![Geographic page](screenshots/02-geographic.png)
 ### Data Model
 ![Data Model](screenshots/03-data-model.png)
+<<<<<<< HEAD
 ### Issues
 ![Issues Page](screenshots/04-issues.png)
 
+=======
+>>>>>>> 29185a77cf3ec11c66c374a062289b4e76d74ae1
 
 ## About the data
-
-|---|---|
-| **Source** | [CFPB Consumer Complaint Database](https://www.consumerfinance.gov/data-research/consumer-complaints/) |
-| **Bulk download** | <https://files.consumerfinance.gov/ccdb/complaints.csv.zip> (~1.7 GB compressed, ~8.4 GB uncompressed) |
-| **Update cadence** | CFPB refreshes the bulk file daily |
-| **Window pulled** | ~5 years (cutoff configurable in `scripts/slice_complaints.py`) |
-| **Row count** | ~12.8M complaints |
-| **License** | Public domain (U.S. government work) |
+**Source** | [CFPB Consumer Complaint Database](https://www.consumerfinance.gov/data-research/consumer-complaints/) 
+**Bulk download** | <https://files.consumerfinance.gov/ccdb/complaints.csv.zip> (~1.7 GB compressed, ~8.4 GB uncompressed) 
+**Update cadence** | CFPB updates with file download (API can't currently handle refresh as dataset is too large)
+**Window pulled** | ~5 years (cutoff configurable in `scripts/slice_complaints.py`) 
+**Row count** | ~12.8M complaints 
+**License** | Public domain (U.S. government work) 
 
 ## Tech stack
-
 - **Power BI Desktop** (model + visuals)
 - **Power Query / M** (live API ingestion, pagination, type coercion)
 - **DAX** (measures for ratios, time-intelligence comparisons, rankings)
@@ -58,7 +56,6 @@ See [docs/setup.md](docs/setup.md).
 See [docs/findings.md](docs/findings.md).
 
 ## License
-
 This project is dedicated to the public domain under
 [Creative Commons CC0 1.0 Universal](LICENSE). You may copy, modify,
 distribute, and use the code freely — no attribution required. CFPB complaint
